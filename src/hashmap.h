@@ -19,10 +19,16 @@
 #define HASHMAP_ARRAY_SIZE 100
 
 /**
+ * @brief hashmap 最大字符串大小
+ *
+ */
+#define HASHMAP_MAX_CHAR 1024
+
+/**
  * @brief 哈希表链表的结点
  */
 struct hashmap_node {
-    char*                key;
+    char                 key[HASHMAP_MAX_CHAR];
     int                  value;
     struct hashmap_node* next;
 };

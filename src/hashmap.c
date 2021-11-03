@@ -19,6 +19,7 @@ int hash_str(char* key) {
 struct hashmap* hashmap_init() {
     struct hashmap* map = (struct hashmap*)malloc(sizeof(struct hashmap));
     for (int i = 0; i < HASHMAP_ARRAY_SIZE; i++) {
+        memset(map->hashmap_head->key, 0, HASHMAP_MAX_CHAR);
         map->hashmap_head->next = NULL;
     }
 
@@ -47,7 +48,7 @@ int put(struct hashmap* map, char* key, int value) {
 
     p = p->next;
 
-    p->key   = key;
+    strcpy(p->key, key);
     p->value = value;
     p->next  = NULL;
 
